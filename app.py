@@ -1,5 +1,7 @@
 from flask import Flask
 
+from mysql_helper import mysql_helper
+
 app = Flask(__name__)
 
 
@@ -10,3 +12,4 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run()
+    print(mysql_helper)
