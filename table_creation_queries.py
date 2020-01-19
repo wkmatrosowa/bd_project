@@ -1,4 +1,4 @@
-MUSICIAN_CREATION = """CREATE TABLE IF NOT EXISTS `Musician`
+MUSICIAN_CREATION = """CREATE TABLE IF NOT EXISTS `musician`
 (
 `id` INT NOT NULL PRIMARY KEY, 
 `firstname` VARCHAR(45) NOT NULL, 
@@ -7,54 +7,56 @@ MUSICIAN_CREATION = """CREATE TABLE IF NOT EXISTS `Musician`
 """
 
 BAND_CREATION = """
-CREATE TABLE IF NOT EXISTS `Band`
+CREATE TABLE IF NOT EXISTS `band`
 (
-`id_band` INT NOT NULL PRIMARY KEY, 
+`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 `bandname` VARCHAR(45) NOT NULL, 
 `yearoffoundation` YEAR NOT NULL)
 """
 
 PARTICIPANTS_CREATION = """
-CREATE TABLE IF NOT EXISTS `Participants`
+CREATE TABLE IF NOT EXISTS `participants`
 ( 
 `id_musician` INT NOT NULL, 
 `id_band` INT NOT NULL,
- FOREIGN KEY (id_musician) REFERENCES Musician (id),
- FOREIGN KEY (id_band) REFERENCES Band (id_band),
+ FOREIGN KEY (id_musician) REFERENCES musician (id),
+ FOREIGN KEY (id_band) REFERENCES band (id),
  PRIMARY KEY (`id_musician`, `id_band`)
 )
 """
 
 PERFORMER_CREATION = """
-CREATE TABLE IF NOT EXISTS `Performer`
+CREATE TABLE IF NOT EXISTS `performer`
 ( 
-`id` INT NOT NULL PRIMARY KEY,
+`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 `id_musician` INT, 
 `id_band` INT,
- FOREIGN KEY (id_musician) REFERENCES Musician (id),
- FOREIGN KEY (id_band) REFERENCES Band (id_band)
+ UNIQUE KEY (`id_musician`),
+ UNIQUE KEY (`id_band`),
+ FOREIGN KEY (id_musician) REFERENCES musician (id),
+ FOREIGN KEY (id_band) REFERENCES band (id)
 )
 """
 
 ALBUM_CREATION = """
-CREATE TABLE IF NOT EXISTS `Album`
+CREATE TABLE IF NOT EXISTS `album`
 ( 
-`id` INT NOT NULL PRIMARY KEY,
+`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 `albumname` VARCHAR(90) NOT NULL, 
 `year` YEAR NOT NULL,
 `genre` VARCHAR(45) NOT NULL,
 `id_performer` INT NOT NULL,
- FOREIGN KEY (id_performer) REFERENCES Performer (id)
+ FOREIGN KEY (id_performer) REFERENCES performer (id)
  )
 """
 
 SONG_CREATION = """
-CREATE TABLE IF NOT EXISTS `Song`
+CREATE TABLE IF NOT EXISTS `song`
 ( 
-`id` INT NOT NULL PRIMARY KEY,
+`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 `songname` VARCHAR(90) NOT NULL, 
 `id_album` INT NOT NULL,
- FOREIGN KEY (id_album) REFERENCES Album (id)
+ FOREIGN KEY (id_album) REFERENCES `album` (id)
  )
 """
 
