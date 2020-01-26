@@ -25,6 +25,9 @@ class MySQLHelper:
         self.__cursor.execute(query)
         self.__mydb.commit()
 
+    def execute_with_params(self, query: str, params: tuple = ()):
+        self.__cursor.execute(query, params=params)
+        self.__mydb.commit()
 
 mysql_helper = MySQLHelper()
 mysql_helper.create_db()
