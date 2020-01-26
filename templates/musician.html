@@ -1,8 +1,23 @@
 <html>
-    <head>
-        <title>Musician</title>
-    </head>
-    <body>
-        <h1>Hello</h1>
-    </body>
+<head>
+    <title>Musician</title>
+</head>
+<body>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.firstname.label }}<br>
+        {{ form.firstname(size=32) }}
+    </p>
+    <p>
+        {{ form.surname.label }}<br>
+        {{ form.surname(size=32) }}
+    </p>
+    <p>
+        {{ form.specialization.label }}<br>
+        {{ form.specialization(size=32) }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+</body>
 </html>
