@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Band</title>
+</head>
+<body>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.bandname.label }}<br>
+        {{ form.bandname(size=32) }}
+    </p>
+    <p>
+        {{ form.yearoffoundation.label }}<br>
+        {{ form.yearoffoundation(size=4) }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+</body>
+</html>
