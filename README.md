@@ -13,5 +13,14 @@ brew services start mysql
 
 ## Дополнительные материалы по SQL
 
-[Metanit](https://metanit.com/sql/mysql/1.1.php)
+* [Metanit](https://metanit.com/sql/mysql/1.1.php)
+* [Как правильно вставлять значение в готовый SQL](https://realpython.com/prevent-python-sql-injection/)
+
+## Какие ошибки встречались
+
+* [mysql.connector.errors.ProgrammingError: Not all parameters were used in the SQL statement](https://stackoverflow.com/questions/20818155/not-all-parameters-were-used-in-the-sql-statement-python-mysql)
+
+
+
+
 
