@@ -1,14 +1,13 @@
 from flask import Flask, render_template, redirect
 
 from mysql_helper import mysql_helper
+from routes.musician_routes import musician_urls
 from services.band_service import BandService
-from services.musician_service import MusicianService
 from web_forms.band_form import BandForm
-from web_forms.musician_form import MusicianForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
-
+app.register_blueprint(musician_urls)
 
 @app.route('/')
 def index():
@@ -25,21 +24,6 @@ def index():
     return render_template('index.html', links=links)
 
 
-@app.route('/musicians')
-def musicians():
-    musicians = MusicianService().find()
-    return render_template('musicians.html', musicians=musicians)
-
-
-@app.route('/musician', methods=['GET', 'POST'])
-def musician():
-    form = MusicianForm()
-    if form.validate_on_submit():
-        MusicianService().save(form)
-        return redirect('/musicians')
-    return render_template('musician.html', form=form)
-
-
 @app.route('/bands')
 def bands():
     return 'bands'
@@ -52,23 +36,6 @@ def band():
         BandService().save(form)
         return redirect('/')
     return render_template('band.html', form=form)
-
-
-@app.route('/musician/<id>')
-def musician_id(id):
-    musician_for_html = MusicianService().find(id=id)
-    if len(musician_for_html) == 1:
-        musician_for_html = musician_for_html[0]
-    else:
-        return 'Oops'
-    form = MusicianForm()
-    form.specialization.data = musician_for_html['specialization']
-    form.surname.data = musician_for_html['surname']
-    form.firstname.data = musician_for_html['firstname']
-    if form.validate_on_submit():
-        MusicianService().save(form, id=id)
-        return redirect('/musicians')
-    return render_template('musician.html', form=form)
 
 
 if __name__ == '__main__':
