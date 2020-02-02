@@ -54,6 +54,23 @@ def band():
     return render_template('band.html', form=form)
 
 
+@app.route('/musician/<id>')
+def musician_id(id):
+    musician_for_html = MusicianService().find(id=id)
+    if len(musician_for_html) == 1:
+        musician_for_html = musician_for_html[0]
+    else:
+        return 'Oops'
+    form = MusicianForm()
+    form.specialization.data = musician_for_html['specialization']
+    form.surname.data = musician_for_html['surname']
+    form.firstname.data = musician_for_html['firstname']
+    if form.validate_on_submit():
+        MusicianService().save(form, id=id)
+        return redirect('/musicians')
+    return render_template('musician.html', form=form)
+
+
 if __name__ == '__main__':
     app.run()
     print(mysql_helper)

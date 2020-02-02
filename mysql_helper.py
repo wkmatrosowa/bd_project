@@ -29,8 +29,8 @@ class MySQLHelper:
         self.__cursor.execute(query, params=params)
         self.__mydb.commit()
 
-    def select(self, query: str):
-        self.__cursor.execute(query)
+    def select(self, query: str, params: tuple = ()):
+        self.__cursor.execute(query, params=params)
         return self.__cursor.fetchall()
 
 mysql_helper = MySQLHelper()
