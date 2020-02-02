@@ -16,6 +16,8 @@ brew services start mysql
 * [Мега-Учебник Flask, Часть 2: Шаблоны (издание 2018)](https://habr.com/ru/post/346340/)
 * [Мега-Учебник Flask, Часть 3: Веб-формы (издание 2018)](https://habr.com/ru/post/346342/)
 * [Как создавать именнованные пути](https://stackoverflow.com/questions/24892035/how-can-i-get-the-named-parameters-from-a-url-using-flask)
+* [Как разделить routes на несколько файлов](https://stackoverflow.com/questions/42608516/flask-router-from-other-file)
+
 
 ## Дополнительные материалы по SQL
 
