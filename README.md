@@ -9,6 +9,7 @@ brew services start mysql
 ## Материалы по Python
 
 * [*args и **kwargs](https://tproger.ru/translations/python-args-and-kwargs/)
+* [Работа со словарями](https://pythonworld.ru/tipy-dannyx-v-python/slovari-dict-funkcii-i-metody-slovarej.html)
 
 ## Материалы по Flask
 
@@ -19,6 +20,7 @@ brew services start mysql
 
 * [Metanit](https://metanit.com/sql/mysql/1.1.php)
 * [Как правильно вставлять значение в готовый SQL](https://realpython.com/prevent-python-sql-injection/)
+* [w3schools](https://www.w3schools.com/python/python_mysql_getstarted.asp)
 
 ## Какие ошибки встречались
 

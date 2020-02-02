@@ -29,6 +29,10 @@ class MySQLHelper:
         self.__cursor.execute(query, params=params)
         self.__mydb.commit()
 
+    def select(self, query: str):
+        self.__cursor.execute(query)
+        return self.__cursor.fetchall()
+
 mysql_helper = MySQLHelper()
 mysql_helper.create_db()
 mysql_helper.create_all_tables(table_creation_queries)

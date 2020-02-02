@@ -36,7 +36,7 @@ def musician():
     form = MusicianForm()
     if form.validate_on_submit():
         MusicianService().save(form)
-        return redirect('/')
+        return redirect('/musicians')
     return render_template('musician.html', form=form)
 
 

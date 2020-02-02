@@ -16,5 +16,17 @@ class MusicianService:
     def find(self, **params):
         request = {}
         for key in self.__table.allowable_keys:
-            request[key] = params[key]
-        return self.__table.find()
+            if params.get(key):
+                request[key] = params[key]
+        sql_result = self.__table.find(request)
+        result = []
+        for res in sql_result:
+            result.append(
+                {
+                    'id': res[0],
+                    'firstname': res[1],
+                    'surname': res[2],
+                    'specialization': res[3],
+                }
+            )
+        return result

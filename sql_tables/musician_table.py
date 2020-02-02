@@ -7,7 +7,7 @@ class MusicianTable:
     __INSERT_SQL = "INSERT INTO musician (firstname, surname, specialization) VALUES (%s, %s, %s)"
     __UPDATE_SQL = ""
     __DELETE_SQL = ""
-    __FIND_SQL = ""
+    __SELECT_SQL = "SELECT * FROM musician"
     allowable_keys = ['id', 'firstname', 'surname', 'specialization']
 
     def __init__(self):
@@ -22,5 +22,5 @@ class MusicianTable:
     def delete(self):
         pass
 
-    def find(self):
-        pass
+    def find(self, request: dict):
+        return mysql_helper.select(self.__SELECT_SQL)
