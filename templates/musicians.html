@@ -9,11 +9,18 @@
     <a href="/musician">Добавить музыканта</a>
 </p>
 <table>
+<tr>
+    <td>id</td>
+    <td>Имя</td>
+    <td>Фамилия</td>
+    <td>Специализация</td>
+</tr>
     {% for musician in musicians %}
         <tr>
             <td>{{ musician.id }}</td>
             <td>{{ musician.firstname }}</td>
             <td>{{ musician.surname }}</td>
+            <td>{{ musician.specialization }}</td>
             <td><a href="/musician/{{ musician.id }}">посмотреть</a></td>
         </tr>
     {% endfor %}
