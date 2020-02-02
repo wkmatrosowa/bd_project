@@ -7,7 +7,10 @@ class MusicianService:
 
     def save(self, data: MusicianForm, id: int = None):
         if id:
-            self.__table.update()
+            self.__table.update(firstname=data.firstname.data,
+                                surname=data.surname.data,
+                                specialization=data.specialization.data,
+                                id=id)
         else:
             self.__table.insert(firstname=data.firstname.data,
                                 surname=data.surname.data,

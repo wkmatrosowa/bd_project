@@ -21,7 +21,7 @@ def musician():
     return render_template('musician.html', form=form)
 
 
-@musician_urls.route('/musician/<id>')
+@musician_urls.route('/musician/<id>', methods=['GET', 'POST'])
 def musician_id(id):
     musician_for_html = MusicianService().find(id=id)
     if len(musician_for_html) == 1:
@@ -29,10 +29,10 @@ def musician_id(id):
     else:
         return 'Oops'
     form = MusicianForm()
-    form.specialization.data = musician_for_html['specialization']
-    form.surname.data = musician_for_html['surname']
-    form.firstname.data = musician_for_html['firstname']
     if form.validate_on_submit():
         MusicianService().save(form, id=id)
         return redirect('/musicians')
+    form.specialization.data = musician_for_html['specialization']
+    form.surname.data = musician_for_html['surname']
+    form.firstname.data = musician_for_html['firstname']
     return render_template('musician.html', form=form)
