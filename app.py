@@ -27,7 +27,8 @@ def index():
 
 @app.route('/musicians')
 def musicians():
-    return 'musicians'
+    musicians = MusicianService().find()
+    return render_template('musicians.html', musicians=musicians)
 
 
 @app.route('/musician', methods=['GET', 'POST'])

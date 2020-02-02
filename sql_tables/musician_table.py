@@ -8,6 +8,7 @@ class MusicianTable:
     __UPDATE_SQL = ""
     __DELETE_SQL = ""
     __FIND_SQL = ""
+    allowable_keys = ['id', 'firstname', 'surname', 'specialization']
 
     def __init__(self):
         pass

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Музыканты</title>
+</head>
+<body>
+<table>
+    {% for musician in musicians %}
+        <tr>
+            <td>{{ musician.id }}</td>
+            <td>{{ musician.firstname }}</td>
+            <td>{{ musician.surname }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

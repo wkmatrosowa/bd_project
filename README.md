@@ -6,6 +6,10 @@ brew services start mysql
 ```
 У вас запустится MySQL с пользователем root с пустым паролем.
 
+## Материалы по Python
+
+* [*args и **kwargs](https://tproger.ru/translations/python-args-and-kwargs/)
+
 ## Материалы по Flask
 
 * [Мега-Учебник Flask, Часть 2: Шаблоны (издание 2018)](https://habr.com/ru/post/346340/)
