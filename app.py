@@ -9,13 +9,26 @@ from web_forms.musician_form import MusicianForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'you-will-never-guess'
 
+
 @app.route('/')
 def index():
-    return 'Hello World!'
+    links = [
+        {
+            'href': '/musicians',
+            'name': 'Музыканты',
+        },
+        {
+            'href': '/bands',
+            'name': 'Группы',
+        }
+    ]
+    return render_template('index.html', links=links)
+
 
 @app.route('/musicians')
 def musicians():
     return 'musicians'
+
 
 @app.route('/musician', methods=['GET', 'POST'])
 def musician():
@@ -25,9 +38,11 @@ def musician():
         return redirect('/')
     return render_template('musician.html', form=form)
 
+
 @app.route('/bands')
 def bands():
     return 'bands'
+
 
 @app.route('/band', methods=['GET', 'POST'])
 def band():
