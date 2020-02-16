@@ -35,4 +35,9 @@ def musician_id(id):
     form.specialization.data = musician_for_html['specialization']
     form.surname.data = musician_for_html['surname']
     form.firstname.data = musician_for_html['firstname']
-    return render_template('musician.html', form=form)
+    return render_template('musician.html', form=form, id=id)
+
+@musician_urls.route('/musician/<id>/delete')
+def musician_delete(id):
+    MusicianService().delete(id)
+    return redirect('/musicians')

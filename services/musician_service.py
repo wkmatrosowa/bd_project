@@ -33,3 +33,6 @@ class MusicianService:
                 }
             )
         return result
+
+    def delete(self, id):
+        self.__table.delete(id)

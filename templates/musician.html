@@ -19,6 +19,9 @@
         {{ form.specialization() }}
     </p>
     <p>{{ form.submit() }}</p>
+        {% if id %}
+            <a href="/musician/{{ id }}/delete">Удалить</a>
+        {% endif %}
 </form>
 </body>
 </html>
