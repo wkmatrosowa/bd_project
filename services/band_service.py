@@ -1,4 +1,3 @@
-from mysql_helper import mysql_helper
 from sql_tables.band_table import BandTable
 from web_forms.band_form import BandForm
 

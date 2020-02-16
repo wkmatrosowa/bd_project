@@ -33,6 +33,8 @@ class MySQLHelper:
         self.__cursor.execute(query, params=params)
         return self.__cursor.fetchall()
 
+    # TODO добавить метод, который вернет id последней добавленной записи
+
 mysql_helper = MySQLHelper()
 mysql_helper.create_db()
 mysql_helper.create_all_tables(table_creation_queries)
