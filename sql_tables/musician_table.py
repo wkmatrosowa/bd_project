@@ -1,7 +1,8 @@
 from mysql_helper import mysql_helper
+from sql_tables.sql_table import SQLTable
 
 
-class MusicianTable:
+class MusicianTable(SQLTable):
     __name = 'musician'
     __INSERT_SQL = "INSERT INTO musician (firstname, surname, specialization) VALUES (%s, %s, %s)"
     __UPDATE_SQL = "UPDATE musician SET firstname = %s, surname = %s, specialization = %s WHERE id = %s"
@@ -23,12 +24,3 @@ class MusicianTable:
 
     def find(self, request: dict):
         return mysql_helper.select(self.__SELECT_SQL + self.generate_where(request.keys()), tuple(request.values()))
-
-    def generate_where(self, keys: list = []):
-        if len(keys) == 0:
-            return ""
-        where_sql = ' where '
-        conditions = []
-        for key in keys:
-            conditions.append('{}=%s'.format(key))
-        return where_sql + " and ".join(conditions)
