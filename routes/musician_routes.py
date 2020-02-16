@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, redirect
 from services.musician_service import MusicianService
 from web_forms.musician_form import MusicianForm
 
-musician_urls = Blueprint("", __name__)
+musician_urls = Blueprint("musician", __name__)
 
 
 @musician_urls.route('/musicians')
