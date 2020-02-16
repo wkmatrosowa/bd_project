@@ -13,6 +13,8 @@
     <td>id</td>
     <td>Имя</td>
     <td>Год создания</td>
+    <td></td>
+    <td></td>
 </tr>
     {% for band in bands %}
         <tr>
@@ -20,6 +22,7 @@
             <td>{{ band.bandname }}</td>
             <td>{{ band.yearoffoundation }}</td>
             <td><a href="/band/{{ band.id }}">посмотреть</a></td>
+            <td><a href="/band/{{ band.id }}/participants">посмотреть участников</a></td>
         </tr>
     {% endfor %}
 </table>
