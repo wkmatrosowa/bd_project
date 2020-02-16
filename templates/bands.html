@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Группы</title>
+</head>
+<body>
+<p>
+    <a href="/band">Добавить группу</a>
+</p>
+<table>
+<tr>
+    <td>id</td>
+    <td>Имя</td>
+    <td>Год создания</td>
+</tr>
+    {% for band in bands %}
+        <tr>
+            <td>{{ band.id }}</td>
+            <td>{{ band.bandname }}</td>
+            <td>{{ band.yearoffoundation }}</td>
+            <td><a href="/band/{{ band.id }}">посмотреть</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

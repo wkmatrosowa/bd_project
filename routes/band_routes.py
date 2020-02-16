@@ -7,7 +7,8 @@ band_urls = Blueprint("band", __name__)
 
 @band_urls.route('/bands')
 def bands():
-    return 'bands'
+    bands = BandService().find()
+    return render_template('bands.html', bands=bands)
 
 @band_urls.route('/band', methods=['GET', 'POST'])
 def band():
