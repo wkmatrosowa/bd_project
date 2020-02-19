@@ -3,7 +3,7 @@ import mysql.connector
 from table_creation_queries import table_creation_queries
 
 
-class MySQLHelper:
+class MySQLAdapter:
 
     def __init__(self, user="root", password=""):
         self.__mydb = mysql.connector.connect(
@@ -35,6 +35,7 @@ class MySQLHelper:
 
     # TODO добавить метод, который вернет id последней добавленной записи
 
-mysql_helper = MySQLHelper()
-mysql_helper.create_db()
-mysql_helper.create_all_tables(table_creation_queries)
+
+mysql_adapter = MySQLAdapter()
+mysql_adapter.create_db()
+mysql_adapter.create_all_tables(table_creation_queries)

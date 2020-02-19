@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-from mysql_helper import mysql_helper
+from mysql_adapter import mysql_adapter
 from routes.band_routes import band_urls
 from routes.musician_routes import musician_urls
 

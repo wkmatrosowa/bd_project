@@ -1,4 +1,4 @@
-from mysql_helper import mysql_helper
+from mysql_adapter import mysql_adapter
 from sql_tables.sql_table import SQLTable
 
 
@@ -14,13 +14,13 @@ class MusicianTable(SQLTable):
         pass
 
     def insert(self, firstname: str = "", surname: str = "", specialization: str = ""):
-        mysql_helper.execute_with_params(query=self.__INSERT_SQL, params=(firstname, surname, specialization))
+        mysql_adapter.execute_with_params(query=self.__INSERT_SQL, params=(firstname, surname, specialization))
 
     def update(self, firstname: str, surname: str, specialization: str, id: str):
-        mysql_helper.execute_with_params(query=self.__UPDATE_SQL, params=(firstname, surname, specialization, id))
+        mysql_adapter.execute_with_params(query=self.__UPDATE_SQL, params=(firstname, surname, specialization, id))
 
     def delete(self, id: str):
-        mysql_helper.execute_with_params(query=self.__DELETE_SQL, params=(id,))
+        mysql_adapter.execute_with_params(query=self.__DELETE_SQL, params=(id,))
 
     def find(self, request: dict):
-        return mysql_helper.select(self.__SELECT_SQL + self.generate_where(request.keys()), tuple(request.values()))
+        return mysql_adapter.select(self.__SELECT_SQL + self.generate_where(request.keys()), tuple(request.values()))

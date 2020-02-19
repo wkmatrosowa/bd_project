@@ -1,4 +1,4 @@
-from mysql_helper import mysql_helper
+from mysql_adapter import mysql_adapter
 from sql_tables.sql_table import SQLTable
 
 
@@ -15,7 +15,7 @@ class BandTable(SQLTable):
         pass
 
     def insert(self, bandname: str = "", yearoffoundation: str = ""):
-        mysql_helper.execute_with_params(query=self.__INSERT_SQL, params=(bandname, yearoffoundation))
+        mysql_adapter.execute_with_params(query=self.__INSERT_SQL, params=(bandname, yearoffoundation))
 
     def update(self):
         pass
@@ -24,4 +24,4 @@ class BandTable(SQLTable):
         pass
 
     def find(self, request: dict):
-        return mysql_helper.select(self.__SELECT_SQL + self.generate_where(request.keys()), tuple(request.values()))
+        return mysql_adapter.select(self.__SELECT_SQL + self.generate_where(request.keys()), tuple(request.values()))
