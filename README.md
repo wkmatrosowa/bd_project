@@ -10,6 +10,7 @@ brew services start mysql
 
 * [*args и **kwargs](https://tproger.ru/translations/python-args-and-kwargs/)
 * [Работа со словарями](https://pythonworld.ru/tipy-dannyx-v-python/slovari-dict-funkcii-i-metody-slovarej.html)
+* [Как сделать кортеж из 1 элемента](https://stackoverflow.com/questions/12876177/how-to-create-a-tuple-with-only-one-element)
 
 ## Материалы по Flask
 
