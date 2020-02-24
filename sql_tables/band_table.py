@@ -6,7 +6,7 @@ class BandTable(SQLTable):
 
     __name = 'band'
     __INSERT_SQL = "INSERT INTO band (bandname, yearoffoundation) VALUES (%s, %s)"
-    __UPDATE_SQL = ""
+    __UPDATE_SQL = "UPDATE band SET bandname = %s, yearoffoundation = %s WHERE id = %s"
     __DELETE_SQL = ""
     __SELECT_SQL = "SELECT * FROM band"
     allowable_keys = ['id', 'bandname', 'yearoffoundation']
@@ -17,8 +17,8 @@ class BandTable(SQLTable):
     def insert(self, bandname: str = "", yearoffoundation: str = ""):
         mysql_adapter.execute_with_params(query=self.__INSERT_SQL, params=(bandname, yearoffoundation))
 
-    def update(self):
-        pass
+    def update(self, bandname: str, yearoffoundation: str, id: str):
+        mysql_adapter.execute_with_params(query=self.__UPDATE_SQL, params=(bandname, yearoffoundation, id))
 
     def delete(self):
         pass

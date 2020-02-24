@@ -20,6 +20,20 @@ def band():
         return redirect('/bands')
     return render_template('band.html', form=form)
 
+@band_urls.route('/band/<id>', methods=['GET', 'POST'])
+def band_id(id):
+    band_for_html = BandService().find(id=id)
+    if len(band_for_html) == 1:
+        band_for_html = band_for_html[0]
+    else:
+        return 'Oops'
+    form = BandForm()
+    if form.validate_on_submit():
+        BandService().save(form, id=id)
+        return redirect('/bands')
+    form.bandname.data = band_for_html['bandname']
+    form.yearoffoundation.data = band_for_html['yearoffoundation']
+    return render_template('band.html', form=form, id=id)
 
 @band_urls.route('/band/<id>/participants', methods=['GET', 'POST'])
 def participants(id):

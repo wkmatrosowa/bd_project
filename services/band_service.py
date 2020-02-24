@@ -8,7 +8,9 @@ class BandService:
 
     def save(self, data: BandForm, id: int = None):
         if id:
-            self.__table.update()
+            self.__table.update(bandname=data.bandname.data,
+                                yearoffoundation=data.yearoffoundation.data,
+                                id=id)
         else:
             self.__table.insert(bandname=data.bandname.data,
                                 yearoffoundation=data.yearoffoundation.data)
