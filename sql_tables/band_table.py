@@ -9,7 +9,12 @@ class BandTable(SQLTable):
     __UPDATE_SQL = "UPDATE band SET bandname = %s, yearoffoundation = %s WHERE id = %s"
     __DELETE_SQL = ""
     __SELECT_SQL = "SELECT * FROM band"
-    allowable_keys = ['id', 'bandname', 'yearoffoundation']
+    __PARTICIPANTS_SQL = """
+    SELECT * FROM musician RIGHT JOIN participants ON musician.id = participants.id_musician 
+    WHERE participants.id_band = %s
+    """
+    __CANDIDATES_SQL = ""
+    allowable_keys = ['id', 'bandname', 'yearoffoundation', 'id_musician', 'firstname', 'surname', 'specialization']
 
     def __init__(self):
         pass
@@ -25,3 +30,6 @@ class BandTable(SQLTable):
 
     def find(self, request: dict):
         return mysql_adapter.select(self.__SELECT_SQL + self.generate_where(request.keys()), tuple(request.values()))
+
+    def get_participants(self, id: str):
+        return mysql_adapter.select(self.__PARTICIPANTS_SQL, (id, ))

@@ -3,7 +3,6 @@ from web_forms.band_form import BandForm
 
 
 class BandService:
-
     __table = BandTable()
 
     def save(self, data: BandForm, id: int = None):
@@ -28,6 +27,21 @@ class BandService:
                     'id': res[0],
                     'bandname': res[1],
                     'yearoffoundation': res[2],
+                }
+            )
+        return result
+
+    def get_participants(self, id):
+        sql_result = self.__table.get_participants(id)
+        result = []
+        for res in sql_result:
+            result.append(
+                {
+                    'id_musician': res[0],
+                    'surname': res[1],
+                    'firstname': res[2],
+                    'specialization': res[3],
+
                 }
             )
         return result
