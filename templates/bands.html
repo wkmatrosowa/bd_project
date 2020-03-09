@@ -6,16 +6,19 @@
 </head>
 <body>
 <p>
+    <a href="/">На главную</a>
+</p>
+<p>
     <a href="/band">Добавить группу</a>
 </p>
 <table>
-<tr>
-    <td>id</td>
-    <td>Имя</td>
-    <td>Год создания</td>
-    <td></td>
-    <td></td>
-</tr>
+    <tr>
+        <td>id</td>
+        <td>Имя</td>
+        <td>Год создания</td>
+        <td></td>
+        <td></td>
+    </tr>
     {% for band in bands %}
         <tr>
             <td>{{ band.id }}</td>

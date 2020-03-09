@@ -6,15 +6,18 @@
 </head>
 <body>
 <p>
+    <a href="/">На главную</a>
+</p>
+<p>
     <a href="/musician">Добавить музыканта</a>
 </p>
 <table>
-<tr>
-    <td>id</td>
-    <td>Имя</td>
-    <td>Фамилия</td>
-    <td>Специализация</td>
-</tr>
+    <tr>
+        <td>id</td>
+        <td>Имя</td>
+        <td>Фамилия</td>
+        <td>Специализация</td>
+    </tr>
     {% for musician in musicians %}
         <tr>
             <td>{{ musician.id }}</td>
