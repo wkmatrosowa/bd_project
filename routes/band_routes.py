@@ -42,6 +42,7 @@ def band_id(id):
 def participants(id):
     band_for_html = BandService().find(id=id)
     band_musicians = BandService().get_participants(id=id)
+    band_candidates = BandService().get_candidates(id=id)
     if len(band_for_html) == 1:
         band_for_html = band_for_html[0]
     else:
@@ -49,5 +50,6 @@ def participants(id):
     form = ParticipantsForm()
     if form.validate_on_submit():
         return redirect('/band/{}/participants'.format(id))
+    form.musicians.choices = band_candidates
     return render_template('participants.html', name=band_for_html['bandname'], band_musicians=band_musicians,
-                           musicians=[], form=form)
+                           form=form)

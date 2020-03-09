@@ -47,14 +47,7 @@ class BandService:
 
     def get_candidates(self, id):
         sql_result = self.__table.get_candidates(id)
-        result = []
+        result = [(0, 'Не выбрано')]
         for res in sql_result:
-            result.append(
-                {
-                    'id_musician': res[0],
-                    'surname': res[1],
-                    'firstname': res[2],
-                    'specialization': res[3],
-                }
-            )
+            result.append((res[0], res[1] + ' ' + res[2] + ' ' + res[3]))
         return result
