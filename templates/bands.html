@@ -25,7 +25,8 @@
             <td>{{ band.bandname }}</td>
             <td>{{ band.yearoffoundation }}</td>
             <td><a href="/band/{{ band.id }}">посмотреть</a></td>
-            <td><a href="/band/{{ band.id }}/participants">посмотреть участников</a></td>
+            <td><a href="/band/{{ band.id }}/participants">(посмотреть участников)</a></td>
+            <td><a href="/albums/{{ band.id_performer }}/">(посмотреть альбомы)</a></td>
         </tr>
     {% endfor %}
 </table>

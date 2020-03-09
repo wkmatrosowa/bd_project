@@ -31,6 +31,7 @@ class BandService:
                     'id': res[0],
                     'bandname': res[1],
                     'yearoffoundation': res[2],
+                    'id_performer': res[3],
                 }
             )
         return result
