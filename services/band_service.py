@@ -51,3 +51,8 @@ class BandService:
         for res in sql_result:
             result.append((res[0], res[1] + ' ' + res[2] + ' ' + res[3]))
         return result
+
+    def add_candidate(self, id_band: int = 0, id_musician: int = 0):
+        if id_band == 0 or id_musician == 0:
+            return
+        self.__table.add_candidate(id_band, id_musician)

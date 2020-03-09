@@ -42,14 +42,17 @@ def band_id(id):
 def participants(id):
     band_for_html = BandService().find(id=id)
     band_musicians = BandService().get_participants(id=id)
-    band_candidates = BandService().get_candidates(id=id)
     if len(band_for_html) == 1:
         band_for_html = band_for_html[0]
     else:
         return 'Oops'
     form = ParticipantsForm()
-    if form.validate_on_submit():
-        return redirect('/band/{}/participants'.format(id))
+    redirect_url='/band/{}/participants'.format(id)
+    if form.data['submit']:
+        BandService().add_candidate(id_band=id, id_musician=form.musicians.data)
+        return redirect(redirect_url)
+
+    band_candidates = BandService().get_candidates(id=id)
     form.musicians.choices = band_candidates
     return render_template('participants.html', name=band_for_html['bandname'], band_musicians=band_musicians,
-                           form=form)
+                           form=form, redirect_url=redirect_url)

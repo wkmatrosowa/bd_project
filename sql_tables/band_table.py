@@ -14,7 +14,11 @@ class BandTable(SQLTable):
     """
     __CANDIDATES_SQL = """
     SELECT * FROM musician LEFT JOIN participants ON musician.id = participants.id_musician
-    WHERE id_band != %s OR id_band is NULL
+    WHERE NOT EXISTS (select 1 from participants where participants.id_band = %s AND participants.id_musician=musician.id)
+    """
+
+    __ADD_CANDIDATES = """
+        INSERT INTO participants(id_musician, id_band) VALUES (%s, %s)
     """
     allowable_keys = ['id', 'bandname', 'yearoffoundation', 'id_musician', 'firstname', 'surname', 'specialization']
 
@@ -38,3 +42,6 @@ class BandTable(SQLTable):
 
     def get_candidates(self, id: str):
         return mysql_adapter.select(self.__CANDIDATES_SQL, (id,))
+
+    def add_candidate(self, id_band, id_musician):
+        mysql_adapter.execute_with_params(self.__ADD_CANDIDATES, (id_musician, id_band))
