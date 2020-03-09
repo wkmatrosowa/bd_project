@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS `participants`
 ( 
 `id_musician` INT NOT NULL, 
 `id_band` INT NOT NULL,
- FOREIGN KEY (id_musician) REFERENCES musician (id),
- FOREIGN KEY (id_band) REFERENCES band (id),
+ FOREIGN KEY (id_musician) REFERENCES musician (id) ON DELETE CASCADE,
+ FOREIGN KEY (id_band) REFERENCES band (id) ON DELETE CASCADE,
  PRIMARY KEY (`id_musician`, `id_band`)
 )
 """
@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `performer`
 `id_band` INT,
  UNIQUE KEY (`id_musician`),
  UNIQUE KEY (`id_band`),
- FOREIGN KEY (id_musician) REFERENCES musician (id),
- FOREIGN KEY (id_band) REFERENCES band (id)
+ FOREIGN KEY (id_musician) REFERENCES musician (id) ON DELETE CASCADE,
+ FOREIGN KEY (id_band) REFERENCES band (id) ON DELETE CASCADE
 )
 """
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `album`
 `year` YEAR NOT NULL,
 `genre` VARCHAR(45) NOT NULL,
 `id_performer` INT NOT NULL,
- FOREIGN KEY (id_performer) REFERENCES performer (id)
+ FOREIGN KEY (id_performer) REFERENCES performer (id) ON DELETE CASCADE
  )
 """
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `song`
 `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 `songname` VARCHAR(90) NOT NULL, 
 `id_album` INT NOT NULL,
- FOREIGN KEY (id_album) REFERENCES `album` (id)
+ FOREIGN KEY (id_album) REFERENCES `album` (id) ON DELETE CASCADE
  )
 """
 

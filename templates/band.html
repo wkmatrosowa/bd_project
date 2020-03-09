@@ -14,6 +14,9 @@
         {{ form.yearoffoundation(size=4) }}
     </p>
     <p>{{ form.submit() }}</p>
+    {% if id %}
+        <a href="/band/{{ id }}/delete">Удалить</a>
+    {% endif %}
 </form>
 </body>
 </html>
