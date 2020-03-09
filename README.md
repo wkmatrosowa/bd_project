@@ -25,6 +25,7 @@ brew services start mysql
 * [Metanit](https://metanit.com/sql/mysql/1.1.php)
 * [Как правильно вставлять значение в готовый SQL](https://realpython.com/prevent-python-sql-injection/)
 * [w3schools](https://www.w3schools.com/python/python_mysql_getstarted.asp)
+* [Как убедиться в том, что такой пары элементов нет в таблице](https://stackoverflow.com/questions/5464131/finding-pairs-that-do-not-exist-in-a-different-table)
 
 ## Какие ошибки встречались
 
