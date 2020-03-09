@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Альбом</title>
+    <title>Album</title>
 </head>
 <body>
-
+<a href="/albums/{{ id_performer }}">< Список альбомов</a>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.albumname.label }}<br>
+        {{ form.albumname(size=32) }}
+    </p>
+    <p>
+        {{ form.year.label }}<br>
+        {{ form.year(size=4) }}
+    </p>
+    <p>
+        {{ form.genre.label }}<br>
+        {{ form.genre() }}
+    </p>
+    <p>{{ form.submit() }}</p>
+        {% if id %}
+            <a href="/album/{{ id }}/delete">Удалить</a>
+        {% endif %}
+</form>
 </body>
 </html>

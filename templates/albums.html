@@ -5,6 +5,29 @@
     <title>Альбомы</title>
 </head>
 <body>
+<p>
+    <a href="/">На главную</a>
+</p>
+<p>
+    <a href="/album/{{ id_performer }}/performer">Добавить альбом</a>
+</p>
+<table>
+    <tr>
+        <td>id</td>
+        <td>Название альбома</td>
+        <td>Год</td>
+        <td>Жанр</td>
+    </tr>
+        {% for album in albums %}
+        <tr>
+            <td>{{ album.id }}</td>
+            <td>{{ album.albumname }}</td>
+            <td>{{ album.year }}</td>
+            <td>{{ album.genre }}</td>
+            <td><a href="/album/{{ album.id }}">посмотреть</a></td>
+        </tr>
+    {% endfor %}
+</table>
 
 </body>
 </html>

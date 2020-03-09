@@ -13,5 +13,4 @@ class AlbumForm(FlaskForm):
         ('Поп', 'Поп'),
         ('Электроника', 'Электроника')
     ])
-    performer = SelectField('Специализация', choices=[])
     submit = SubmitField('Сохранить')

@@ -5,20 +5,18 @@ from web_forms.album_form import AlbumForm
 class AlbumService:
     __table = AlbumTable()
 
-    def save(self, data: AlbumForm, id: int = None):
+    def save(self, data: AlbumForm, id: int = None, id_performer=None):
         if id:
             self.__table.update(albumname=data.albumname.data,
                                 year=data.year.data,
                                 genre=data.genre.data,
-                                id_performer=data.performer.data,
+                                id_performer=id_performer,
                                 id=id)
         else:
             self.__table.insert(albumname=data.albumname.data,
                                 year=data.year.data,
                                 genre=data.genre.data,
-                                id_performer=data.performer.data)
-
-
+                                id_performer=id_performer)
 
     def find(self, **params):
         request = {}
