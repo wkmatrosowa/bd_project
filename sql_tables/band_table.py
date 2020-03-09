@@ -35,3 +35,6 @@ class BandTable(SQLTable):
 
     def get_participants(self, id: str):
         return mysql_adapter.select(self.__PARTICIPANTS_SQL, (id,))
+
+    def get_candidates(self, id: str):
+        return mysql_adapter.select(self.__CANDIDATES_SQL, (id,))
