@@ -56,3 +56,6 @@ class BandService:
         if id_band == 0 or id_musician == 0:
             return
         self.__table.add_candidate(id_band, id_musician)
+
+    def delete(self, id):
+        self.__table.delete(id)

@@ -6,7 +6,7 @@ class BandTable(SQLTable):
     __name = 'band'
     __INSERT_SQL = "INSERT INTO band (bandname, yearoffoundation) VALUES (%s, %s)"
     __UPDATE_SQL = "UPDATE band SET bandname = %s, yearoffoundation = %s WHERE id = %s"
-    __DELETE_SQL = ""
+    __DELETE_SQL = "DELETE FROM band WHERE id = %s"
     __SELECT_SQL = "SELECT * FROM band"
     __PARTICIPANTS_SQL = """
     SELECT * FROM musician RIGHT JOIN participants ON musician.id = participants.id_musician 
@@ -16,7 +16,6 @@ class BandTable(SQLTable):
     SELECT * FROM musician LEFT JOIN participants ON musician.id = participants.id_musician
     WHERE NOT EXISTS (select 1 from participants where participants.id_band = %s AND participants.id_musician=musician.id)
     """
-
     __ADD_CANDIDATES = """
         INSERT INTO participants(id_musician, id_band) VALUES (%s, %s)
     """
@@ -31,8 +30,8 @@ class BandTable(SQLTable):
     def update(self, bandname: str, yearoffoundation: str, id: str):
         mysql_adapter.execute_with_params(query=self.__UPDATE_SQL, params=(bandname, yearoffoundation, id))
 
-    def delete(self):
-        pass
+    def delete(self, id: str):
+        mysql_adapter.execute_with_params(query=self.__DELETE_SQL, params=(id,))
 
     def find(self, request: dict):
         return mysql_adapter.select(self.__SELECT_SQL + self.generate_where(request.keys()), tuple(request.values()))
