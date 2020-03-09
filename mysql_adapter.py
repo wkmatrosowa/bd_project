@@ -1,6 +1,6 @@
 import mysql.connector
 
-from table_creation_queries import table_creation_queries
+from sql_queries.table_creation_queries import table_creation_queries
 
 
 class MySQLAdapter:
