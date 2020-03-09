@@ -12,7 +12,7 @@
         <tr>
             <td>{{ musician.surname }} {{ musician.firstname }}</td>
             <td>{{ musician.specialization }}</td>
-            <td><a href="">удалить</a></td>
+            <td><a href="/band/{{ id }}/participant/{{ musician.id_musician }}">удалить</a></td>
         </tr>
     {% endfor %}
 </table>

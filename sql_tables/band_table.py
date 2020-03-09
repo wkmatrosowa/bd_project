@@ -16,9 +16,10 @@ class BandTable(SQLTable):
     SELECT * FROM musician LEFT JOIN participants ON musician.id = participants.id_musician
     WHERE NOT EXISTS (select 1 from participants where participants.id_band = %s AND participants.id_musician=musician.id)
     """
-    __ADD_CANDIDATES = """
+    __ADD_PARTICIPANT_SQL = """
         INSERT INTO participants(id_musician, id_band) VALUES (%s, %s)
     """
+    __DELETE_PARTICIPANTS_SQL = "DELETE FROM participants WHERE id_band = %s AND id_musician = %s"
     allowable_keys = ['id', 'bandname', 'yearoffoundation', 'id_musician', 'firstname', 'surname', 'specialization']
 
     def __init__(self):
@@ -42,5 +43,8 @@ class BandTable(SQLTable):
     def get_candidates(self, id: str):
         return mysql_adapter.select(self.__CANDIDATES_SQL, (id,))
 
-    def add_candidate(self, id_band, id_musician):
-        mysql_adapter.execute_with_params(self.__ADD_CANDIDATES, (id_musician, id_band))
+    def add_participant(self, id_band, id_musician):
+        mysql_adapter.execute_with_params(self.__ADD_PARTICIPANT_SQL, (id_musician, id_band))
+
+    def delete_participant(self, id_band, id_musician):
+        mysql_adapter.execute_with_params(query=self.__DELETE_PARTICIPANTS_SQL, params=(id_band, id_musician))

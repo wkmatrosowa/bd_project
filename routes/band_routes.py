@@ -47,12 +47,18 @@ def participants(id):
     else:
         return 'Oops'
     form = ParticipantsForm()
-    redirect_url='/band/{}/participants'.format(id)
     if form.data['submit']:
-        BandService().add_candidate(id_band=id, id_musician=form.musicians.data)
+        redirect_url = '/band/{}/participants'.format(id)
+        BandService().add_participant(id_band=id, id_musician=form.musicians.data)
         return redirect(redirect_url)
 
     band_candidates = BandService().get_candidates(id=id)
     form.musicians.choices = band_candidates
     return render_template('participants.html', name=band_for_html['bandname'], band_musicians=band_musicians,
-                           form=form, redirect_url=redirect_url)
+                           form=form, id=id)
+
+
+@band_urls.route('/band/<id_band>/participant/<id_musician>', methods=['GET'])
+def participant_delete(id_band, id_musician):
+    BandService().delete_participant(id_band, id_musician)
+    return redirect('/band/{}/participants'.format(id_band))
