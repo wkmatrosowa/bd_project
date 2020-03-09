@@ -3,7 +3,6 @@ from sql_tables.sql_table import SQLTable
 
 
 class BandTable(SQLTable):
-
     __name = 'band'
     __INSERT_SQL = "INSERT INTO band (bandname, yearoffoundation) VALUES (%s, %s)"
     __UPDATE_SQL = "UPDATE band SET bandname = %s, yearoffoundation = %s WHERE id = %s"
@@ -13,7 +12,10 @@ class BandTable(SQLTable):
     SELECT * FROM musician RIGHT JOIN participants ON musician.id = participants.id_musician 
     WHERE participants.id_band = %s
     """
-    __CANDIDATES_SQL = ""
+    __CANDIDATES_SQL = """
+    SELECT * FROM musician LEFT JOIN participants ON musician.id = participants.id_musician
+    WHERE id_band != %s OR id_band is NULL
+    """
     allowable_keys = ['id', 'bandname', 'yearoffoundation', 'id_musician', 'firstname', 'surname', 'specialization']
 
     def __init__(self):
@@ -32,4 +34,4 @@ class BandTable(SQLTable):
         return mysql_adapter.select(self.__SELECT_SQL + self.generate_where(request.keys()), tuple(request.values()))
 
     def get_participants(self, id: str):
-        return mysql_adapter.select(self.__PARTICIPANTS_SQL, (id, ))
+        return mysql_adapter.select(self.__PARTICIPANTS_SQL, (id,))

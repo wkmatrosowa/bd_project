@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect
 
 from services.band_service import BandService
 from web_forms.band_form import BandForm
+from web_forms.participants_form import ParticipantsForm
 
 band_urls = Blueprint("band", __name__)
 
@@ -45,5 +46,8 @@ def participants(id):
         band_for_html = band_for_html[0]
     else:
         return 'Oops'
+    form = ParticipantsForm()
+    if form.validate_on_submit():
+        return redirect('/band/{}/participants'.format(id))
     return render_template('participants.html', name=band_for_html['bandname'], band_musicians=band_musicians,
-                           musicians=[])
+                           musicians=[], form=form)
