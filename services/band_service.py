@@ -1,9 +1,11 @@
 from sql_tables.band_table import BandTable
+from sql_tables.performer_table import PerformerTable
 from web_forms.band_form import BandForm
 
 
 class BandService:
     __table = BandTable()
+    __performer_table = PerformerTable()
 
     def save(self, data: BandForm, id: int = None):
         if id:
@@ -13,6 +15,8 @@ class BandService:
         else:
             self.__table.insert(bandname=data.bandname.data,
                                 yearoffoundation=data.yearoffoundation.data)
+            id = self.__table.inserted_id()
+            self.__performer_table.insert(id_band=id)
 
     def find(self, **params):
         request = {}

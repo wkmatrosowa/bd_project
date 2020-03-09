@@ -1,9 +1,11 @@
 from sql_tables.musician_table import MusicianTable
+from sql_tables.performer_table import PerformerTable
 from web_forms.musician_form import MusicianForm
 
 
 class MusicianService:
     __table = MusicianTable()
+    __performer_table = PerformerTable()
 
     def save(self, data: MusicianForm, id: int = None):
         if id:
@@ -15,6 +17,8 @@ class MusicianService:
             self.__table.insert(firstname=data.firstname.data,
                                 surname=data.surname.data,
                                 specialization=data.specialization.data)
+            id = self.__table.inserted_id()
+            self.__performer_table.insert(id_musician=id)
 
     def find(self, **params):
         request = {}

@@ -33,7 +33,8 @@ class MySQLAdapter:
         self.__cursor.execute(query, params=params)
         return self.__cursor.fetchall()
 
-    # TODO добавить метод, который вернет id последней добавленной записи
+    def inserted_id(self):
+        return self.__cursor.lastrowid
 
 
 mysql_adapter = MySQLAdapter()

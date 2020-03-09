@@ -26,6 +26,7 @@ brew services start mysql
 * [Как правильно вставлять значение в готовый SQL](https://realpython.com/prevent-python-sql-injection/)
 * [w3schools](https://www.w3schools.com/python/python_mysql_getstarted.asp)
 * [Как убедиться в том, что такой пары элементов нет в таблице](https://stackoverflow.com/questions/5464131/finding-pairs-that-do-not-exist-in-a-different-table)
+* [Как получить id добавленной записи](https://stackoverflow.com/questions/2548493/how-do-i-get-the-id-after-insert-into-mysql-database-with-python)
 
 ## Какие ошибки встречались
 
