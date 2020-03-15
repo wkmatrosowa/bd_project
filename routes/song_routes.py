@@ -45,7 +45,8 @@ def song(id_album):
     return render_template('song.html',
                            form=form,
                            id_album=id_album,
-                           name_album=album['albumname']
+                           name_album=album['albumname'],
+                           bandname=album['bandname']
                            )
 
 
@@ -65,7 +66,9 @@ def song_id(id, id_album):
                            form=form,
                            id=id,
                            id_album=id_album,
-                           name_album=song_for_html['albumname'])
+                           name_album=song_for_html['albumname'],
+                           bandname=song_for_html['bandname'],
+                           )
 
 
 @song_urls.route('/song/<id>/delete/<id_album>')

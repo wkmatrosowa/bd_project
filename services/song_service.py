@@ -27,6 +27,8 @@ class SongService:
                     'songname': res[1],
                     'id_album': res[2],
                     'albumname': res[3],
+                    'id_performer': res[4],
+                    'bandname': res[5],
                 }
             )
         return result
