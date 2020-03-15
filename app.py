@@ -31,25 +31,5 @@ def index():
     ]
     return render_template('index.html', links=links)
 
-
-@app.route('/stats')
-def stats():
-    links = [
-        {
-            'href': '/musicians',
-            'name': 'Музыканты',
-        },
-        {
-            'href': '/bands',
-            'name': 'Группы',
-        },
-        {
-            'href': '/stats',
-            'name': 'Статистика по группам',
-        }
-    ]
-    return render_template('index.html', links=links)
-
-
 if __name__ == '__main__':
     app.run()

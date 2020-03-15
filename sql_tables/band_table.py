@@ -22,6 +22,13 @@ class BandTable(SQLTable):
     __DELETE_PARTICIPANTS_SQL = "DELETE FROM participants WHERE id_band = %s AND id_musician = %s"
     allowable_keys = ['id', 'bandname', 'yearoffoundation', 'id_musician', 'firstname', 'surname', 'specialization']
 
+    __SELECT_STATS = """
+            SELECT band.id, bandname, 
+        (select count(*) from participants where participants.id_band = band.id) as particapants_count, 
+        (select count(*) from album where album.id_performer = band.id) as albums_count , 
+        (select count(*) from song inner join album on song.id_album = album.id where album.id_performer = band.id) as songs_count 
+        FROM band"""
+
     def __init__(self):
         pass
 
@@ -36,6 +43,9 @@ class BandTable(SQLTable):
 
     def find(self, request: dict):
         return mysql_adapter.select(self.__SELECT_SQL + self.generate_where(request.keys()), tuple(request.values()))
+
+    def get_stats(self):
+        return mysql_adapter.select(self.__SELECT_STATS, params=())
 
     def get_participants(self, id: str):
         return mysql_adapter.select(self.__PARTICIPANTS_SQL, (id,))

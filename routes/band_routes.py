@@ -63,7 +63,14 @@ def participant_delete(id_band, id_musician):
     BandService().delete_participant(id_band, id_musician)
     return redirect('/band/{}/participants'.format(id_band))
 
+
 @band_urls.route('/band/<id>/delete')
 def band_delete(id):
     BandService().delete(id)
     return redirect('/bands')
+
+
+@band_urls.route('/stats')
+def stats():
+    stats = BandService().get_stats()
+    return render_template('stats.html', stats=stats)

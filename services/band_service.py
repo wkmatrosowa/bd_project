@@ -62,3 +62,19 @@ class BandService:
 
     def delete_participant(self, id_band, id_musician):
         self.__table.delete_participant(id_band, id_musician)
+
+    def get_stats(self):
+        sql_result = self.__table.get_stats()
+        result = []
+
+        for res in sql_result:
+            result.append(
+                {
+                    'id': res[0],
+                    'bandname': res[1],
+                    'particapants_count': res[2],
+                    'albums_count': res[3],
+                    'songs_count': res[4]
+                }
+            )
+        return result

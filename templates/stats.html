@@ -5,6 +5,26 @@
     <title>Statistics</title>
 </head>
 <body>
-
+<p>
+    <a href="/">На главную</a>
+</p>
+<table>
+    <tr>
+        <td>id</td>
+        <td>Имя группы</td>
+        <td>Количество<br/>участников</td>
+        <td>Количество<br/>альбомов</td>
+        <td>Количество<br/>песен</td>
+    </tr>
+    {% for row in stats %}
+        <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.bandname }}</td>
+            <td>{{ row.particapants_count }}</td>
+            <td>{{ row.albums_count }}</td>
+            <td>{{ row.songs_count }}</td>
+        </tr>
+    {% endfor %}
+</table>
 </body>
 </html>
