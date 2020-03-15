@@ -28,6 +28,7 @@ brew services start mysql
 * [Как убедиться в том, что такой пары элементов нет в таблице](https://stackoverflow.com/questions/5464131/finding-pairs-that-do-not-exist-in-a-different-table)
 * [Как получить id добавленной записи](https://stackoverflow.com/questions/2548493/how-do-i-get-the-id-after-insert-into-mysql-database-with-python)
 * [Каскадное удаление](https://www.mysqltutorial.org/mysql-on-delete-cascade/)
+* [Убрать дублирующиеся записи из запроса](https://stackoverflow.com/questions/7676110/how-to-remove-duplicates-from-table-using-sql-query)
 
 ## Какие ошибки встречались
 
