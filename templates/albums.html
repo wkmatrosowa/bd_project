@@ -25,6 +25,7 @@
             <td>{{ album.year }}</td>
             <td>{{ album.genre }}</td>
             <td><a href="/album/{{ album.id }}/performer/{{ id_performer }}">посмотреть</a></td>
+            <td><a href="/songs/{{ album.id }}">(посмотреть песни)</a></td>
         </tr>
     {% endfor %}
 </table>

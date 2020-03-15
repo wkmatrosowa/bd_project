@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Песни</title>
+</head>
+<body>
+<p>
+    <a href="/">На главную</a>
+</p>
+<p>
+    <a href="/song/{{ id_album }}/album">Добавить песню</a>
+</p>
+<table>
+    <tr>
+        <td>id</td>
+        <td>Название песни</td>
+    </tr>
+        {% for song in songs %}
+        <tr>
+            <td>{{ song.id }}</td>
+            <td>{{ song.songname }}</td>
+            <td><a href="/song/{{ song.id }}/album/{{ id_album }}">посмотреть</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

@@ -10,7 +10,6 @@ class AlbumService:
             self.__table.update(albumname=data.albumname.data,
                                 year=data.year.data,
                                 genre=data.genre.data,
-                                id_performer=id_performer,
                                 id=id)
         else:
             self.__table.insert(albumname=data.albumname.data,
