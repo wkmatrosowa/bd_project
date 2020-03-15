@@ -7,7 +7,7 @@ class BandTable(SQLTable):
     __INSERT_SQL = "INSERT INTO band (bandname, yearoffoundation) VALUES (%s, %s)"
     __UPDATE_SQL = "UPDATE band SET bandname = %s, yearoffoundation = %s WHERE id = %s"
     __DELETE_SQL = "DELETE FROM band WHERE id = %s"
-    __SELECT_SQL = "SELECT band.id as id, bandname, yearoffoundation, performer.id as id_performer FROM band INNER join performer on band.id=performer.id_band"
+    __SELECT_SQL = "SELECT * FROM band"
     __PARTICIPANTS_SQL = """
     SELECT * FROM musician RIGHT JOIN participants ON musician.id = participants.id_musician 
     WHERE participants.id_band = %s
