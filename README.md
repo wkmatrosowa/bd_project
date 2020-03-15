@@ -29,6 +29,7 @@ brew services start mysql
 * [Как получить id добавленной записи](https://stackoverflow.com/questions/2548493/how-do-i-get-the-id-after-insert-into-mysql-database-with-python)
 * [Каскадное удаление](https://www.mysqltutorial.org/mysql-on-delete-cascade/)
 * [Убрать дублирующиеся записи из запроса](https://stackoverflow.com/questions/7676110/how-to-remove-duplicates-from-table-using-sql-query)
+* [Посчитать количество записей](https://stackoverflow.com/questions/16560539/getting-count-of-records-in-child-table-using-select-statement)
 
 ## Какие ошибки встречались
 
