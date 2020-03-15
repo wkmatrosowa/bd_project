@@ -6,7 +6,9 @@
 </head>
 <body>
 <p>
-    <a href="/">На главную</a>
+    <a href="/">На главную</a>/<a href="/bands">Группы</a>/<a href="/band/ {{ id_performer }}">{{ name_performer }}</a>/<a
+        href="/albums/{{ id_performer }}">Альбомы</a>/<a
+        href="/album/{{ id_album }}/performer/{{ id_performer }}">{{ name_album }}</a>
 </p>
 <p>
     <a href="/song/{{ id_album }}/album">Добавить песню</a>
@@ -16,7 +18,7 @@
         <td>id</td>
         <td>Название песни</td>
     </tr>
-        {% for song in songs %}
+    {% for song in songs %}
         <tr>
             <td>{{ song.id }}</td>
             <td>{{ song.songname }}</td>

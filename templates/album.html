@@ -3,7 +3,7 @@
     <title>Album</title>
 </head>
 <body>
-<a href="/albums/{{ id_performer }}">< Список альбомов</a>
+<a href="/albums/{{ id_performer }}">< Список альбомов исполнителя {{ name_performer }}</a>
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <p>
@@ -19,9 +19,9 @@
         {{ form.genre() }}
     </p>
     <p>{{ form.submit() }}</p>
-        {% if id %}
-            <a href="/album/{{ id }}/delete/{{ id_performer }}">Удалить</a>
-        {% endif %}
+    {% if id %}
+        <a href="/album/{{ id }}/delete/{{ id_performer }}">Удалить</a>
+    {% endif %}
 </form>
 </body>
 </html>

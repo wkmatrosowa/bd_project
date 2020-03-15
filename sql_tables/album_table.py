@@ -7,7 +7,7 @@ class AlbumTable(SQLTable):
     __INSERT_SQL = "INSERT INTO album (albumname, year, genre, id_performer) VALUES (%s, %s, %s, %s)"
     __UPDATE_SQL = "UPDATE album SET albumname = %s, year = %s, genre = %s WHERE id = %s"
     __DELETE_SQL = "DELETE FROM album WHERE id = %s"
-    __SELECT_SQL = "SELECT * FROM album"
+    __SELECT_SQL = "SELECT album.id as id, albumname, year, genre, id_performer, bandname FROM album left join band on band.id = album.id_performer"
     allowable_keys = ['id', 'albumname', 'year', 'genre', 'id_performer']
 
     def __init__(self):

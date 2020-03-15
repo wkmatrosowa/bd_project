@@ -17,7 +17,7 @@ class SongService:
         request = {}
         for key in self.__table.allowable_keys:
             if params.get(key):
-                request[key] = params[key]
+                request['song.' + key] = params[key]
         sql_result = self.__table.find(request)
         result = []
         for res in sql_result:
@@ -26,6 +26,7 @@ class SongService:
                     'id': res[0],
                     'songname': res[1],
                     'id_album': res[2],
+                    'albumname': res[3],
                 }
             )
         return result

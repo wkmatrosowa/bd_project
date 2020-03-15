@@ -9,7 +9,7 @@ class BandTable(SQLTable):
     __DELETE_SQL = "DELETE FROM band WHERE id = %s"
     __SELECT_SQL = "SELECT * FROM band"
     __PARTICIPANTS_SQL = """
-    SELECT * FROM musician RIGHT JOIN participants ON musician.id = participants.id_musician 
+    SELECT distinct id, firstname, surname, specialization FROM musician RIGHT JOIN participants ON musician.id = participants.id_musician 
     WHERE participants.id_band = %s
     """
     __CANDIDATES_SQL = """
