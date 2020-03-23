@@ -30,6 +30,7 @@ brew services start mysql
 * [Каскадное удаление](https://www.mysqltutorial.org/mysql-on-delete-cascade/)
 * [Убрать дублирующиеся записи из запроса](https://stackoverflow.com/questions/7676110/how-to-remove-duplicates-from-table-using-sql-query)
 * [Посчитать количество записей](https://stackoverflow.com/questions/16560539/getting-count-of-records-in-child-table-using-select-statement)
+* [Руководство по проектированию реляционных баз данных (7-9 часть из 15)](https://habr.com/ru/post/193380/)
 
 ## Какие ошибки встречались
 
